@@ -34,5 +34,5 @@ FROM
     student s
         JOIN
     class c ON s.class_id = c.id
-GROUP BY c.name
+GROUP BY c.id
 ORDER BY average_point DESC;
