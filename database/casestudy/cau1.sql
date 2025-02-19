@@ -1,11 +1,11 @@
 insert 
-	into vi_tri
+	into vi_tri (ma_vi_tri, ten_vi_tri)
 values 
 	(1, 'Quan ly'),
 	(2, 'Nhan vien');
     
 insert
-	into trinh_do
+	into trinh_do (ma_trinh_do, ten_trinh_do)
 values
 	(1, 'Trung cap'),
     (2, 'Cao dang'),
@@ -13,7 +13,7 @@ values
     (4, 'Sau dai hoc');
     
 insert
-	into bo_phan
+	into bo_phan (ma_bo_phan, ten_bo_phan)
 values
 	(1, 'Sale-Marketing'),
     (2, 'Hanh chinh'),
@@ -21,7 +21,7 @@ values
     (4, 'Quan ly');
     
 insert
-	into nhan_vien
+	into nhan_vien (ma_nhan_vien, ho_ten, ngay_sinh, so_cmnd, luong, so_dien_thoai, email, dia_chi, ma_vi_tri, ma_trinh_do, ma_bo_phan)
 values
 	(1, 'Nguyen Van An', '1970-11-07', 456231786, 10000000, '0901234121', 'annguyen@gmail.com', '295 Nguyen Tat Thanh, Da Nang', 1, 3, 1),
     (2, 'Le Van Binh', '1997-04-09', 654231234, 7000000, '0934212314', 'binhlv@gmail.com', '22 Yen Bai, Da Nang', 1, 2, 2),
@@ -35,7 +35,7 @@ values
     (10, 'Nguyen Cong Dao', '1994-01-08', 755434343, 8000000, '0988767111', 'nguyencongdao12@gmail.com', '6 Hoa Khanh, Dong Nai', 2, 3, 2);
     
 insert
-	into loai_khach
+	into loai_khach (ma_loai_khach, ten_loai_khach)
 values
 	(1, 'Diamond'),
     (2, 'Platinum'),
@@ -44,7 +44,7 @@ values
     (5, 'Member');
 
 insert
-	into khach_hang
+	into khach_hang (ma_khach_hang, ma_loai_khach, ho_ten, ngay_sinh, gioi_tinh, so_cmnd, so_dien_thoai, email, dia_chi)
 values
 	(1, 5, 'Nguyen Thi Hao', '1970-11-07', 0, '643431213', '0945423362', 'thihao07@gmail.com', '23 Nguyen Hoang, Da Nang'),
     (2, 3, 'Pham Xuan Dieu', '1992-08-08', 1, '865342123', '0954333333', 'xuandieu92@gmail.com', 'K77/22 Thai Phien, Quang Tri'),
@@ -58,7 +58,7 @@ values
     (10, 2, 'Nguyen Tam Đac', '1989-07-01', 1, '344343432', '0987654321', 'dactam@gmail.com', '22 Ngo Quyen, Da Nang');
     
 insert
-	into kieu_thue
+	into kieu_thue (ma_kieu_thue, ten_kieu_thue)
 values
 	(1, 'year'),
     (2, 'month'),
@@ -66,14 +66,15 @@ values
     (4, 'hour');
     
 insert
-	into loai_dich_vu
+	into loai_dich_vu (ma_loai_dich_vu, ten_loai_dich_vu)
 values
 	(1, 'Villa'),
     (2, 'House'),
     (3, 'Room');
     
 insert
-	into dich_vu
+	into dich_vu (ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue, so_nguoi_toi_da, ma_kieu_thue, ma_loai_dich_vu, tieu_chuan_phong,
+		mo_ta_tien_nghi_khac, dien_tich_ho_boi, so_tang)
 values
 	(1, 'Villa Beach Front', 25000, 10000000, 10, 3, 1, 'vip', 'Co ho boi', 500, 4),
     (2, 'House Princess 01', 14000, 5000000, 7, 2, 2, 'vip', 'Co them bep nuong', null, 3),
@@ -83,7 +84,7 @@ values
     (6,'Room Twin 02', 3000, 900000, 2, 4, 3, 'normal', 'Co tivi', null, null);
     
 insert
-	into dich_vu_di_kem
+	into dich_vu_di_kem (ma_dich_vu_di_kem, ten_dich_vu_di_kem, gia, don_vi, trang_thai)
 values
 	(1, 'Karaoke', 10000, 'gio', 'tien nghi, hien tai'),
     (2, 'Thue xe may', 10000, 'chiec', 'hong 1 xe'),
@@ -93,7 +94,7 @@ values
     (6, 'Buffet buoi toi', 16000, 'suat', 'day du do an, trang mieng');
     
 insert
-	into hop_dong
+	into hop_dong (ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu)
 values
 	(1, '2020-12-08', '2020-12-08', 0, 3, 1, 3),
     (2, '2020-07-14', '2020-07-21', 200000, 7, 3, 1),
@@ -109,7 +110,7 @@ values
     (12, '2021-05-25', '2021-05-27', 0, 7, 10, 1);
     
 insert
-	into hop_dong_chi_tiet
+	into hop_dong_chi_tiet (ma_hop_dong_chi_tiet, ma_hop_dong, ma_dich_vu_di_kem, so_luong)
 values
 	(1, 2, 4, 5),
     (2, 2, 5, 8),

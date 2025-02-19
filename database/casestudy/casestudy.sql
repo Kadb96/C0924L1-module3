@@ -4,17 +4,20 @@ use casestudy;
 
 CREATE TABLE vi_tri (
     ma_vi_tri INT PRIMARY KEY,
-    ten_vi_tri VARCHAR(45)
+    ten_vi_tri VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL
 );
 
 CREATE TABLE trinh_do (
     ma_trinh_do INT PRIMARY KEY,
-    ten_trinh_do VARCHAR(45)
+    ten_trinh_do VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL
 );
 
 CREATE TABLE bo_phan (
     ma_bo_phan INT PRIMARY KEY,
-    ten_bo_phan VARCHAR(45)
+    ten_bo_phan VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL
 );
 
 CREATE TABLE nhan_vien (
@@ -29,6 +32,7 @@ CREATE TABLE nhan_vien (
     ma_vi_tri INT NOT NULL,
     ma_trinh_do INT NOT NULL,
     ma_bo_phan INT NOT NULL,
+    is_delete BOOLEAN DEFAULT(0) NOT NULL,
     FOREIGN KEY (ma_vi_tri)
         REFERENCES vi_tri (ma_vi_tri),
     FOREIGN KEY (ma_trinh_do)
@@ -39,7 +43,8 @@ CREATE TABLE nhan_vien (
 
 CREATE TABLE loai_khach (
     ma_loai_khach INT PRIMARY KEY,
-    ten_loai_khach VARCHAR(45)
+    ten_loai_khach VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL
 );
 
 CREATE TABLE khach_hang (
@@ -52,18 +57,21 @@ CREATE TABLE khach_hang (
     so_dien_thoai VARCHAR(45) NOT NULL,
     email VARCHAR(45),
     dia_chi VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL,
     FOREIGN KEY (ma_loai_khach)
         REFERENCES loai_khach (ma_loai_khach)
 );
 
 CREATE TABLE loai_dich_vu (
     ma_loai_dich_vu INT PRIMARY KEY,
-    ten_loai_dich_vu VARCHAR(45)
+    ten_loai_dich_vu VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL
 );
 
 CREATE TABLE kieu_thue (
     ma_kieu_thue INT PRIMARY KEY,
-    ten_kieu_thue VARCHAR(45)
+    ten_kieu_thue VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL
 );
 
 CREATE TABLE dich_vu (
@@ -78,6 +86,7 @@ CREATE TABLE dich_vu (
     mo_ta_tien_nghi_khac VARCHAR(45),
     dien_tich_ho_boi DOUBLE,
     so_tang INT,
+    is_delete BOOLEAN DEFAULT(0) NOT NULL,
     FOREIGN KEY (ma_kieu_thue)
         REFERENCES kieu_thue (ma_kieu_thue),
     FOREIGN KEY (ma_loai_dich_vu)
@@ -89,7 +98,8 @@ CREATE TABLE dich_vu_di_kem (
     ten_dich_vu_di_kem varchar(45),
     gia DOUBLE NOT NULL,
     don_vi VARCHAR(10) NOT NULL,
-    trang_thai VARCHAR(45)
+    trang_thai VARCHAR(45),
+    is_delete BOOLEAN DEFAULT(0) NOT NULL
 );
 
 CREATE TABLE hop_dong (
@@ -100,6 +110,7 @@ CREATE TABLE hop_dong (
     ma_nhan_vien INT NOT NULL,
     ma_khach_hang INT NOT NULL,
     ma_dich_vu INT NOT NULL,
+    is_delete BOOLEAN DEFAULT(0) NOT NULL,
     FOREIGN KEY (ma_nhan_vien)
         REFERENCES nhan_vien (ma_nhan_vien),
     FOREIGN KEY (ma_khach_hang)
@@ -113,6 +124,7 @@ CREATE TABLE hop_dong_chi_tiet (
     ma_hop_dong INT NOT NULL,
     ma_dich_vu_di_kem INT NOT NULL,
     so_luong INT NOT NULL,
+    is_delete BOOLEAN DEFAULT(0) NOT NULL,
     FOREIGN KEY (ma_hop_dong)
         REFERENCES hop_dong (ma_hop_dong),
     FOREIGN KEY (ma_dich_vu_di_kem)

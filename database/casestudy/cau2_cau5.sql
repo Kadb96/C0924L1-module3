@@ -5,9 +5,9 @@ SELECT
 FROM
     nhan_vien
 WHERE
-    ho_ten LIKE 'H%' 
-		OR ho_ten LIKE 'T%'
-		OR ho_ten LIKE 'K%';
+    (ho_ten LIKE 'H%' OR ho_ten LIKE 'T%'
+        OR ho_ten LIKE 'K%')
+        AND is_delete = 0;
     
 -- Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
 
@@ -18,10 +18,9 @@ FROM
 WHERE
     YEAR(CURDATE()) - YEAR(ngay_sinh) >= 18
         AND YEAR(CURDATE()) - YEAR(ngay_sinh) <= 50
-        AND (
-			dia_chi LIKE '% Da Nang'
-			OR dia_chi LIKE '% Quang Tri'
-        );
+        AND (dia_chi LIKE '% Da Nang'
+			OR dia_chi LIKE '% Quang Tri')
+        AND is_delete = 0;
         
 -- Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. 
 -- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng. 
@@ -40,6 +39,9 @@ FROM
     ON kh.ma_loai_khach = lk.ma_loai_khach
 WHERE
     lk.ten_loai_khach = 'diamond'
+    AND lk.is_delete = 0
+    AND hd.is_delete = 0
+    AND kh.is_delete = 0
 GROUP BY kh.ma_khach_hang
 ORDER BY so_lan_dat_phong ASC;
 
@@ -55,7 +57,10 @@ SELECT
     sub_table.ten_dich_vu,
     sub_table.ngay_lam_hop_dong,
     sub_table.ngay_ket_thuc,
-    sub_table.tong_tien
+    sub_table.tong_tien,
+    kh.is_delete,
+    lk.is_delete,
+    hd.is_delete
 FROM
     khach_hang kh
         JOIN
@@ -74,5 +79,15 @@ FROM
     LEFT JOIN dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
     LEFT JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
     LEFT JOIN dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
-    GROUP BY hd.ma_hop_dong) AS sub_table ON hd.ma_hop_dong = sub_table.ma_hop_dong;
+    WHERE
+        dv.is_delete = 0 AND hd.is_delete = 0
+            AND (hdct.is_delete = 0
+				OR hdct.is_delete IS NULL)
+            AND (dvdk.is_delete = 0
+				OR dvdk.is_delete IS NULL)
+    GROUP BY hd.ma_hop_dong) AS sub_table ON hd.ma_hop_dong = sub_table.ma_hop_dong
+    WHERE
+		kh.is_delete = 0
+        AND lk.is_delete = 0
+        AND (hd.is_delete = 0 OR hd.is_delete is null);
 

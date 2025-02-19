@@ -60,3 +60,40 @@ AND
 		ngay_lam_hop_dong >= DATE '2021-01-01'
 			AND ngay_lam_hop_dong <= DATE '2021-06-30')
 GROUP BY ma_hop_dong, ho_ten_nhan_vien, ho_ten_khach_hang, so_dien_thoai_khach_hang, ten_dich_vu, tien_dat_coc;
+
+-- Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
+-- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
+
+SELECT dvdk.*
+FROM dich_vu_di_kem dvdk
+	JOIN hop_dong_chi_tiet hdct
+    ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+GROUP BY dvdk.ma_dich_vu_di_kem
+HAVING 
+	count(dvdk.ma_dich_vu_di_kem) = (
+		SELECT count(ma_hop_dong_chi_tiet)
+        FROM hop_dong_chi_tiet
+        GROUP BY ma_dich_vu_di_kem
+        ORDER BY count(ma_dich_vu_di_kem) DESC
+        LIMIT 1
+        );
+        
+-- Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
+-- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung (được tính dựa trên việc count các ma_dich_vu_di_kem).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
