@@ -14,10 +14,12 @@ FROM
         ON kh.ma_loai_khach = lk.ma_loai_khach
 WHERE
     lk.ten_loai_khach = 'Diamond'
-        AND (
-        kh.dia_chi LIKE '% Vinh'
+	AND (kh.dia_chi LIKE '% Vinh'
         OR kh.dia_chi LIKE '% Quang Ngai'
-        );
+	) AND dvdk.is_delete = 0
+    AND hd.is_delete = 0
+    AND kh.is_delete = 0
+    AND lk.is_delete = 0;
         
 -- Hiển thị thông tin ma_hop_dong, ho_ten (nhân viên), ho_ten (khách hàng), so_dien_thoai (khách hàng), ten_dich_vu, so_luong_dich_vu_di_kem 
 -- (được tính dựa trên việc sum so_luong ở dich_vu_di_kem), 
@@ -44,21 +46,31 @@ FROM
         LEFT JOIN dich_vu_di_kem dvdk
         ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
 WHERE 
-dv.ma_dich_vu IN (SELECT DISTINCT
-		ma_dich_vu
-	FROM
-		hop_dong
-	WHERE
-		ngay_lam_hop_dong >= DATE '2020-10-01'
-			AND ngay_lam_hop_dong <= DATE '2021-12-30')
-AND
-	dv.ma_dich_vu NOT IN (SELECT DISTINCT
-		ma_dich_vu
-	FROM
-		hop_dong
-	WHERE
-		ngay_lam_hop_dong >= DATE '2021-01-01'
-			AND ngay_lam_hop_dong <= DATE '2021-06-30')
+	dv.ma_dich_vu IN (SELECT DISTINCT
+			ma_dich_vu
+		FROM
+			hop_dong
+		WHERE
+			ngay_lam_hop_dong >= DATE '2020-10-01'
+				AND ngay_lam_hop_dong <= DATE '2020-12-30'
+				AND is_delete = 0)
+	AND
+		dv.ma_dich_vu NOT IN (SELECT DISTINCT
+			ma_dich_vu
+		FROM
+			hop_dong
+		WHERE
+			ngay_lam_hop_dong >= DATE '2021-01-01'
+				AND ngay_lam_hop_dong <= DATE '2021-06-30'
+				AND is_delete = 0)
+	AND hd.is_delete = 0
+	AND kh.is_delete = 0
+	AND nv.is_delete = 0
+	AND dv.is_delete = 0
+	AND (hdct.is_delete = 0
+		OR hdct.is_delete IS NULL)
+	AND (dvdk.is_delete = 0
+		OR hdct.is_delete IS NULL)
 GROUP BY ma_hop_dong, ho_ten_nhan_vien, ho_ten_khach_hang, so_dien_thoai_khach_hang, ten_dich_vu, tien_dat_coc;
 
 -- Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
@@ -68,20 +80,48 @@ SELECT dvdk.*
 FROM dich_vu_di_kem dvdk
 	JOIN hop_dong_chi_tiet hdct
     ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+WHERE dvdk.is_delete = 0
+	AND hdct.is_delete = 0
 GROUP BY dvdk.ma_dich_vu_di_kem
 HAVING 
-	count(dvdk.ma_dich_vu_di_kem) = (
-		SELECT count(ma_hop_dong_chi_tiet)
+	sum(hdct.so_luong) = (
+		SELECT sum(so_luong)
         FROM hop_dong_chi_tiet
+        WHERE is_delete = 0
         GROUP BY ma_dich_vu_di_kem
-        ORDER BY count(ma_dich_vu_di_kem) DESC
+        ORDER BY sum(so_luong) DESC
         LIMIT 1
         );
         
 -- Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
 -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung (được tính dựa trên việc count các ma_dich_vu_di_kem).
 
-
+SELECT hdct.ma_hop_dong,
+	ldv.ten_loai_dich_vu,
+    dvdk.ten_dich_vu_di_kem,
+    sub_table.so_lan_su_dung
+FROM hop_dong_chi_tiet hdct
+	JOIN hop_dong hd
+    ON hdct.ma_hop_dong = hd.ma_hop_dong
+    JOIN dich_vu dv
+    ON hd.ma_dich_vu = dv.ma_dich_vu
+    JOIN loai_dich_vu ldv
+    ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
+    JOIN dich_vu_di_kem dvdk
+    ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+    JOIN (SELECT  
+			ma_dich_vu_di_kem,
+            count(ma_dich_vu_di_kem) so_lan_su_dung
+		FROM hop_dong_chi_tiet
+		WHERE is_delete = 0
+		GROUP BY ma_dich_vu_di_kem
+		HAVING count(ma_dich_vu_di_kem) = 1) as sub_table
+	ON hdct.ma_dich_vu_di_kem = sub_table.ma_dich_vu_di_kem
+WHERE hdct.is_delete = 0
+	AND dv.is_delete = 0
+    AND hd.is_delete = 0
+    AND ldv.is_delete = 0
+    AND dvdk.is_delete = 0;
 
 
 

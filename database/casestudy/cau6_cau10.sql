@@ -99,7 +99,7 @@ SELECT
     hd.ma_hop_dong,
     hd.ngay_lam_hop_dong,
     hd.tien_dat_coc,
-    COUNT(hdct.ma_hop_dong) so_luong_dich_vu_di_kem
+    sum(hdct.so_luong) so_luong_dich_vu_di_kem
 FROM
     hop_dong hd
         LEFT JOIN
