@@ -51,8 +51,8 @@ WHERE
 		FROM
 			hop_dong
 		WHERE
-			ngay_lam_hop_dong >= DATE '2020-10-01'
-				AND ngay_lam_hop_dong <= DATE '2020-12-30'
+			ngay_lam_hop_dong >= '2020-10-01'
+				AND ngay_lam_hop_dong <= '2020-12-30'
 				AND is_delete = 0)
 	AND
 		dv.ma_dich_vu NOT IN (SELECT DISTINCT
@@ -60,8 +60,8 @@ WHERE
 		FROM
 			hop_dong
 		WHERE
-			ngay_lam_hop_dong >= DATE '2021-01-01'
-				AND ngay_lam_hop_dong <= DATE '2021-06-30'
+			ngay_lam_hop_dong >= '2021-01-01'
+				AND ngay_lam_hop_dong <= '2021-06-30'
 				AND is_delete = 0)
 	AND hd.is_delete = 0
 	AND kh.is_delete = 0
@@ -219,7 +219,9 @@ SELECT * FROM khach_hang;
 
 UPDATE dich_vu_di_kem
 SET gia = gia * 2
-WHERE ma_dich_vu_di_kem IN (
+WHERE 
+	is_delete = 0
+    AND ma_dich_vu_di_kem IN (
 	SELECT hdct.ma_dich_vu_di_kem
     FROM 
 		hop_dong_chi_tiet hdct
@@ -234,3 +236,13 @@ WHERE ma_dich_vu_di_kem IN (
     
     SELECT * FROM dich_vu_di_kem;
 
+-- Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, 
+-- thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
+
+SELECT ma_nhan_vien id, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi
+FROM nhan_vien
+WHERE is_delete = 0
+UNION ALL
+	SELECT ma_khach_hang id, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi
+    FROM khach_hang
+    WHERE is_delete = 0;
