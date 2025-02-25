@@ -1,0 +1,16 @@
+h1 {
+    font-family: "Times New Roman";
+    margin-bottom: 5px;
+}
+hr {
+    margin: 2px;
+}
+p, .header {
+    font-family: "Arial";
+}
+div {
+    margin: 50px 5px 50px 5px;
+}
+.blue {
+    color: blue;
+}
