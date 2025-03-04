@@ -5,72 +5,346 @@
     <title>Surface</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --bs-blue: #0067b8 !important;
+            --bs-primary: #0067b8 !important;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: #0067b8 !important;
+            --bs-btn-border-color: #0067b8 !important;
+            --bs-btn-hover-bg: #0067b8 !important;
+            --bs-btn-hover-border-color: #0067b8 !important;
+        }
+
+        .btn-hover:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img
-                    src="../../Shop Surface Pro Tablets, Surface Laptop, and Surface Book/Shop Surface Pro Tablets, Surface Laptop, and Surface Book_files/microsoft-gray.png"
-                    height="23" width="108"/>
+                        src="../../Shop Surface Pro Tablets, Surface Laptop, and Surface Book/Shop Surface Pro Tablets, Surface Laptop, and Surface Book_files/microsoft-gray.png"
+                        height="23" width="108"/>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Surface</a>
+                        <a class="nav-link active">Surface</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
                             Computer
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" class="row">
-                            <li class="dropdown-item">
-                                <ul>2-in-1 PCs
-                                    <li>Surface Pro, Copilot+ PC</li>
-                                    <li>Explore 2-in-1 PCs</li>
-                                </ul>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li class="dropdown-item">
-                                <ul>Laptops
-                                    <li>Surface Laptop, Copilot+ PC</li>
-                                    <li>Surface Laptop Studio 2</li>
-                                    <li>Surface Laptop Go 3</li>
-                                    <li>Explore all Laptops</li>
-                                </ul>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li class="dropdown-item">
-                                <ul>All-in-One
-                                    <li>Surface Studio 2+</li>
-                                </ul>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li class="dropdown-item">
-                                <ul>Need help deciding?
-                                    <li>Compare Surface devices</li>
-                                    <li>Help me choose a Surface</li>
-                                    <li>Why Surface</li>
-                                    <li>Do more with Surface</li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 950px">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>2-in-1 PCs</strong></a>
+                                        <a class="dropdown-item">Surface Pro, Copilot+ PC</a>
+                                        <a class="dropdown-item">Explore 2-in-1 PCs</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Laptops</strong></a>
+                                        <a class="dropdown-item">Surface Laptop, Copilot+ PC</a>
+                                        <a class="dropdown-item">Surface Laptop Studio 2</a>
+                                        <a class="dropdown-item">Surface Laptop Go 3</a>
+                                        <a class="dropdown-item">Explore all Laptops</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>All-in-One</strong></a>
+                                        <a class="dropdown-item">Surface Studio 2+</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Need help deciding?</strong></a>
+                                        <a class="dropdown-item">Compare Surface devices</a>
+                                        <a class="dropdown-item">Help me choose a Surface</a>
+                                        <a class="dropdown-item">Why Surface</a>
+                                        <a class="dropdown-item">Do more with Surface</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                            Computer for Business
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 1000px">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>2-in-1 Tablets</strong></a>
+                                        <a class="dropdown-item">NEW Surface Pro<br>
+                                            for Business, Copilot+ PC | Intel</a>
+                                        <a class="dropdown-item">Surface Pro for Business,<br>
+                                            Copilot+ PC | Snapdragon</a>
+                                        <a class="dropdown-item">Surface Pro 10 for Business</a>
+                                        <a class="dropdown-item">Surface Pro 9 for Business</a>
+                                        <a class="dropdown-item">Surface Go 4 for Business</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Laptops</strong></a>
+                                        <a class="dropdown-item">NEW Surface Laptop for<br>
+                                            Business, Copilot+ PC | Intel</a>
+                                        <a class="dropdown-item">Surface Laptop for<br>
+                                            Business, Copilot+ PC | Snapdragon</a>
+                                        <a class="dropdown-item">Surface Laptop 5 for Business</a>
+                                        <a class="dropdown-item">Surface Laptop Studio 2 for<br>
+                                            Business</a>
+                                        <a class="dropdown-item">Surface Laptop Go 3 for<br>
+                                            Business</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Small and Large Screens</strong></a>
+                                        <a class="dropdown-item">Surface Studio 2+ for<br>
+                                            Business</a>
+                                        <a class="dropdown-item">Surface Hub 3</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Accessories</strong></a>
+                                        <a class="dropdown-item">All Accessories</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Need help deciding?</strong></a>
+                                        <a class="dropdown-item">Compare Surface devices for<br>
+                                            Business</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                            Accessories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item">Surface Pro accessories</a>
+                            <a class="dropdown-item">Surface Laptop accessories</a>
+                            <a class="dropdown-item">Surface Studio accessories</a>
+                            <a class="dropdown-item">All Surface accessories</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                            Shop now
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item">All Surface devices</a>
+                            <a class="dropdown-item">Surface deals</a>
+                            <a class="dropdown-item">Surface bundles</a>
+                            <a class="dropdown-item">Certified refurbished Surface</a>
+                            <a class="dropdown-item">Surface repair parts</a>
+                            <a class="dropdown-item">Where to buy</a>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link active">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-primary btn-hover">SHOP DEALS</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                            All Microsoft
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"
+                             style="min-width: 900px">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <a class="dropdown-header col-auto">Teams</a>
+                                    <a class="dropdown-header col-auto">Copilot</a>
+                                    <a class="dropdown-header col-auto">Windows</a>
+                                    <a class="dropdown-header col-auto">Surface</a>
+                                    <a class="dropdown-header col-auto">Xbox</a>
+                                    <a class="dropdown-header col-auto">Deals</a>
+                                    <a class="dropdown-header col-auto">Small Business</a>
+                                    <a class="dropdown-header col-auto">Support</a>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Software</strong></a>
+                                        <a class="dropdown-item">Windows Apps</a>
+                                        <a class="dropdown-item">AI</a>
+                                        <a class="dropdown-item">Outlook</a>
+                                        <a class="dropdown-item">Onedrive</a>
+                                        <a class="dropdown-item">Microsoft Teams</a>
+                                        <a class="dropdown-item">OneNote</a>
+                                        <a class="dropdown-item">Microsoft Edge</a>
+                                        <a class="dropdown-item">Skype</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>PC & Devices</strong></a>
+                                        <a class="dropdown-item">Computers</a>
+                                        <a class="dropdown-item">Shop Xbox</a>
+                                        <a class="dropdown-item">Accessories</a>
+                                        <a class="dropdown-item">VR & mixed reality</a>
+                                        <a class="dropdown-item">Certified Refurbished</a>
+                                        <a class="dropdown-item">Trade-in for cash</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Entertainment</strong></a>
+                                        <a class="dropdown-item">Xbox Game Pass Ultimate</a>
+                                        <a class="dropdown-item">PC Game Pass</a>
+                                        <a class="dropdown-item">Xbox Games</a>
+                                        <a class="dropdown-item">PC and Windows games</a>
+                                        <a class="dropdown-item">Movies & TV</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Business</strong></a>
+                                        <a class="dropdown-item">Microsoft Cloud</a>
+                                        <a class="dropdown-item">Microsoft Security</a>
+                                        <a class="dropdown-item">Dynamic 365</a>
+                                        <a class="dropdown-item">Microsoft 365 for business</a>
+                                        <a class="dropdown-item">Microsoft Power Platform</a>
+                                        <a class="dropdown-item">Window 365</a>
+                                        <a class="dropdown-item">Microsoft Industry</a>
+                                        <a class="dropdown-item">Small Business</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Developer & IT</strong></a>
+                                        <a class="dropdown-item">Azure</a>
+                                        <a class="dropdown-item">Microsoft Developer</a>
+                                        <a class="dropdown-item">Documentation</a>
+                                        <a class="dropdown-item">Microsoft Learn</a>
+                                        <a class="dropdown-item">Microsoft Tech Community</a>
+                                        <a class="dropdown-item">Azure Marketplace</a>
+                                        <a class="dropdown-item">AppSource</a>
+                                        <a class="dropdown-item">Visual Studio</a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a class="dropdown-header"><strong>Other</strong></a>
+                                        <a class="dropdown-item">Microsoft Rewards</a>
+                                        <a class="dropdown-item">Free downloads & security</a>
+                                        <a class="dropdown-item">Education</a>
+                                        <a class="dropdown-item">Gift Card</a>
+                                        <a class="dropdown-item">Licensing</a>
+                                        <a class="dropdown-item">Unlocked stories</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <li>
+                    <li class="nav-item navbar-right">
+                        <a class="nav-link active">Search
+                            <i class="bi bi-search"></i></a>
+                    </li>
+                    <li class="nav-item navbar-right">
+                        <a class="nav-link active">Cart <i class="bi bi-cart"></i></a>
+                    </li>
+                    <li class="nav-item navbar-right">
+                        <a class="nav-link active">Sign In <i class="bi bi-person-circle"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
+    <div class="container">
+        <div class="d-flex flex-column align-items-center gap-3 py-5">
+            <h3>Copilot+PC</h3>
+            <h1 class="display-2 fw-medium">Join the era of the AI</h1>
+            <p>Meet the ultimate Copilot+ PCs from Microsoft Surface, powered by Snapdragon® X Elite Plus
+                processors.</p>
+            <div class="d-flex gap-4">
+                <button class="btn btn-primary">Explore Surface Pro</button>
+                <button class="btn btn-primary">Explore Surface Laptop</button>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-light">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-2">
+                    <h5>What's new</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">Surface Pro</li>
+                        <li class="nav-item">Surface Laptop</li>
+                        <li class="nav-item">Surface Laptop Studio 2</li>
+                        <li class="nav-item">Surface Laptop Go 3</li>
+                        <li class="nav-item">Microsoft Copilot</li>
+                        <li class="nav-item">AI in Windows</li>
+                        <li class="nav-item">Explore Microsoft products</li>
+                        <li class="nav-item">Windows 11 apps</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h5>Microsoft Store</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">Account profile</li>
+                        <li class="nav-item">Download Center</li>
+                        <li class="nav-item">Microsoft Store support</li>
+                        <li class="nav-item">Returns</li>
+                        <li class="nav-item">Order tracking</li>
+                        <li class="nav-item">Certified Refurbished</li>
+                        <li class="nav-item">Microsoft Store Promise</li>
+                        <li class="nav-item">Flexible Payments</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h5>Education</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">Microsoft in education</li>
+                        <li class="nav-item">Devices for education</li>
+                        <li class="nav-item">Microsoft Teams for Education</li>
+                        <li class="nav-item">Microsoft 365 Education</li>
+                        <li class="nav-item">How to buy for your school</li>
+                        <li class="nav-item">Educator training and development</li>
+                        <li class="nav-item">Deals for students and parents</li>
+                        <li class="nav-item">Azure for students</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h5>Business</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">Microsoft Cloud</li>
+                        <li class="nav-item">Microsoft Security</li>
+                        <li class="nav-item">Dynamics 365</li>
+                        <li class="nav-item">Microsoft 365</li>
+                        <li class="nav-item">Microsoft Power Platform</li>
+                        <li class="nav-item">Microsoft Teams</li>
+                        <li class="nav-item">Microsoft 365 Copilot</li>
+                        <li class="nav-item">Small Business</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h5>Developer & IT</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">Azure</li>
+                        <li class="nav-item">Microsoft Developer</li>
+                        <li class="nav-item">Documentation</li>
+                        <li class="nav-item">Microsoft Learn</li>
+                        <li class="nav-item">Microsoft Tech Community</li>
+                        <li class="nav-item">Azure Marketplace</li>
+                        <li class="nav-item">AppSource</li>
+                        <li class="nav-item">Visual Studio</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h5>Company</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">Careers</li>
+                        <li class="nav-item">About Microsoft</li>
+                        <li class="nav-item">Company news</li>
+                        <li class="nav-item">Privacy at Microsoft</li>
+                        <li class="nav-item">Investors</li>
+                        <li class="nav-item">Diversity and inclusion</li>
+                        <li class="nav-item">Accessibility</li>
+                        <li class="nav-item">Sustainability</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
