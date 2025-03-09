@@ -7,7 +7,7 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<c:redirect url="/homepage"/>
+<c:redirect url="/home"/>
 <a href="/hello-servlet">afjiaj</a>
 </body>
 </html>

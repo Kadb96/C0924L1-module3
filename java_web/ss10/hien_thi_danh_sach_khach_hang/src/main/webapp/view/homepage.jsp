@@ -11,6 +11,6 @@
     <title>Home</title>
 </head>
 <body>
-<h1>Homepage</h1>
+<a href="/customers"> Danh sach khach hang</a>
 </body>
 </html>

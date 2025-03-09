@@ -1,4 +1,4 @@
-package com.codegym.hien_thi_danh_sach_khach_hang.controller;
+package com.codegym.hien_thi_danh_sach_khach_hang;
 
 import com.codegym.hien_thi_danh_sach_khach_hang.model.Customer;
 
@@ -30,6 +30,7 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("customers", customerList);
         req.getRequestDispatcher("/views/customer/list.jsp").forward(req, resp);
     }
 
