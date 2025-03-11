@@ -8,6 +8,6 @@
 </head>
 <body>
 <c:redirect url="/home"/>
-<a href="/hello-servlet">afjiaj</a>
+<a href="/hello-servlet">Hello Servlet</a>
 </body>
 </html>

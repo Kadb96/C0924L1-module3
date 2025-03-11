@@ -1,4 +1,4 @@
-package com.codegym.hien_thi_danh_sach_khach_hang;
+package com.codegym.hien_thi_danh_sach_khach_hang.controller;
 
 import com.codegym.hien_thi_danh_sach_khach_hang.model.Customer;
 
@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "CustomerServlet", value = "/customers")
-public class CustomerServlet extends HttpServlet {
+@WebServlet(name = "CustomerController", value = "/customers")
+public class CustomerController extends HttpServlet {
     private static List<Customer> customerList = new ArrayList<>();
 
     static {
@@ -30,8 +30,8 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("customers", customerList);
-        req.getRequestDispatcher("/views/customer/list.jsp").forward(req, resp);
+        req.setAttribute("customerList", customerList);
+        req.getRequestDispatcher("/view/customer/list.jsp").forward(req, resp);
     }
 
     @Override
