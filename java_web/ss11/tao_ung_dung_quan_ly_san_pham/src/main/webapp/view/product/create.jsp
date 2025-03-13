@@ -1,19 +1,16 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 3/12/2025
-  Time: 1:34 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Form nhập sản phẩm</title>
+    <c:import url="/view/layout/library.jsp"/>
 </head>
 <body>
-<button><a href="/products">Hiển thị danh sách sản phẩm</a></button>
+<c:import url="/view/layout/header.jsp"></c:import>
 <h1>Nhập thông tin sản phẩm</h1>
-<form action="/products?action=createProduct" method="get">
+<form action="/products" method="get">
+    <input type="hidden" name="action" value="createProduct">
     <input type=number placeholder="ID sản phẩm" name="id"><br>
     <input type=text placeholder="Tên sản phẩm" name="name"><br>
     <input type=number placeholder="Giá sản phẩm" name="price"><br>

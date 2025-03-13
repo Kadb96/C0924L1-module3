@@ -28,14 +28,37 @@ public class ProductController extends HttpServlet {
                 showFormCreate(req, resp);
                 break;
             case "createProduct":
+                createProduct(req,resp);
                 break;
-            case "delete":
+            case "deleteProduct":
+                deleteProduct(req, resp);
                 break;
-            case "update":
+            case "updateProduct":
+                updateProduct(req, resp);
                 break;
             default:
                 showList(req, resp);
         }
+    }
+
+    private void updateProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        int price = Integer.parseInt(req.getParameter("price"));
+        String description = req.getParameter("description");
+        String producer = req.getParameter("producer");
+        productService.update(id, new Product(id, name, price, producer, description));
+        List<Product> productList = productService.findAll();
+        req.setAttribute("productList", productList);
+        req.getRequestDispatcher("view/product/list.jsp").forward(req, resp);
+    }
+
+    private void deleteProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        productService.delete(id);
+        List<Product> productList = productService.findAll();
+        req.setAttribute("productList", productList);
+        req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
     }
 
 
@@ -56,5 +79,6 @@ public class ProductController extends HttpServlet {
         String description = req.getParameter("description");
         String producer = req.getParameter("producer");
         productService.add(new Product(id, name, price, producer, description));
+        req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
     }
 }

@@ -10,9 +10,10 @@
 <html>
 <head>
     <title>Home</title>
+    <c:import url="../view/layout/library.jsp"/>
 </head>
 <body>
-<button><a href="/products">Hiển thị danh sách sản phẩm</a></button>
-<button><a href="/products?action=showFormCreate">Tạo sản phẩm mới</a></button>
+<c:import url="../view/layout/header.jsp"/>
+<h1>Trang quản lý sản phẩm</h1>
 </body>
 </html>

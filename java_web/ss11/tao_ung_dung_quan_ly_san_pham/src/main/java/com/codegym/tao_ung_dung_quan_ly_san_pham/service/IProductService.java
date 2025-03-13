@@ -8,4 +8,8 @@ public interface IProductService {
     List<Product> findAll();
 
     boolean add(Product product);
+
+    boolean delete(int id);
+
+    boolean update(int id, Product product);
 }

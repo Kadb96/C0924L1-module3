@@ -28,4 +28,29 @@ public class ProductRepository implements IProductRepository {
     public boolean add(Product product) {
         return productList.add(product);
     }
+
+    @Override
+    public boolean delete(int id) {
+        for(int i = 0; i < productList.size(); i++) {
+            if(productList.get(i).getId() == id) {
+                productList.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(int id, Product product) {
+        for(int i = 0; i < productList.size(); i++) {
+            if(productList.get(i).getId() == id) {
+                productList.get(i).setName(product.getName());
+                productList.get(i).setPrice(product.getPrice());
+                productList.get(i).setDescription(product.getDescription());
+                productList.get(i).setProducer(product.getProducer());
+                return true;
+            }
+        }
+        return false;
+    }
 }
