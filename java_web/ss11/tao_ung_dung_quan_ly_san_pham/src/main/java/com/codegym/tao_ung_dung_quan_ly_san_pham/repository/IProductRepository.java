@@ -12,4 +12,6 @@ public interface IProductRepository {
     boolean delete(int id);
 
     boolean update(int id, Product product);
+
+    List<Product> search(String name);
 }

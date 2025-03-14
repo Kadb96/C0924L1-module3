@@ -28,7 +28,7 @@ public class ProductController extends HttpServlet {
                 showFormCreate(req, resp);
                 break;
             case "createProduct":
-                createProduct(req,resp);
+                createProduct(req, resp);
                 break;
             case "deleteProduct":
                 deleteProduct(req, resp);
@@ -36,9 +36,19 @@ public class ProductController extends HttpServlet {
             case "updateProduct":
                 updateProduct(req, resp);
                 break;
+            case "searchProduct":
+                searchProduct(req, resp);
+                break;
             default:
                 showList(req, resp);
         }
+    }
+
+    private void searchProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        List<Product> searchedProductList = productService.search(name);
+        req.setAttribute("searchedProductList", searchedProductList);
+        req.getRequestDispatcher("view/product/list.jsp").forward(req, resp);
     }
 
     private void updateProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

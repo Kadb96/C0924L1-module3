@@ -27,4 +27,9 @@ public class ProductService implements IProductService {
     public boolean update(int id, Product product) {
         return productRepository.update(id, product);
     }
+
+    @Override
+    public List<Product> search(String name) {
+        return productRepository.search(name);
+    }
 }
