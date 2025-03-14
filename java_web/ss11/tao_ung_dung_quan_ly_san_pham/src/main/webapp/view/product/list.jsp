@@ -20,7 +20,7 @@
         <form action="/products" method="get">
             <input type="hidden" name="action" value="searchProduct">
             <input type="search" name="name" class="form-control rounded" placeholder="Tìm kiếm" aria-label="Search"
-                   aria-describedby="search-addon"/>
+                   aria-describedby="search-addon">
             <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Tìm kiếm</button>
         </form>
     </div>
@@ -41,14 +41,16 @@
                 <td>${product.getName()}</td>
                 <td>${product.getPrice()}</td>
                 <td>
-                    <button onclick="productInfo(`${product.getId()}`, `${product.getName()}`, `${product.getPrice()}`, `${product.getDescription()}`, `${product.getProducer()}`)"
+                    <button onclick="productInfo(`${product.getId()}`, `${product.getName()}`, `${product.getPrice()}`,
+                            `${product.getDescription()}`, `${product.getProducer()}`)"
                             type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
                             data-bs-target="#infoModal">
                         Chi tiết
                     </button>
                 </td>
                 <td>
-                    <button onclick="updateInfo(`${product.getId()}`,`${product.getName()}`, `${product.getPrice()}`, `${product.getDescription()}`, `${product.getProducer()}`)"
+                    <button onclick="updateInfo(`${product.getId()}`,`${product.getName()}`, `${product.getPrice()}`,
+                            `${product.getDescription()}`, `${product.getProducer()}`)"
                             type="button"
                             class="btn btn-warning btn-sm" data-bs-toggle="modal"
                             data-bs-target="#updateModal">

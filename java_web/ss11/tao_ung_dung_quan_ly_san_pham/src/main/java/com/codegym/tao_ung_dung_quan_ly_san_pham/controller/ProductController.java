@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductController", value = "/products")
@@ -47,7 +46,7 @@ public class ProductController extends HttpServlet {
     private void searchProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         List<Product> searchedProductList = productService.search(name);
-        req.setAttribute("searchedProductList", searchedProductList);
+        req.setAttribute("productList", searchedProductList);
         req.getRequestDispatcher("view/product/list.jsp").forward(req, resp);
     }
 
@@ -89,6 +88,8 @@ public class ProductController extends HttpServlet {
         String description = req.getParameter("description");
         String producer = req.getParameter("producer");
         productService.add(new Product(id, name, price, producer, description));
+        List<Product> productList = productService.findAll();
+        req.setAttribute("productList", productList);
         req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
     }
 }
